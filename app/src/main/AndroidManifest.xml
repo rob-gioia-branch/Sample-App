@@ -20,7 +20,40 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <!-- If utilizing $deeplink_path please explicitly declare your hosts, or utilize a wildcard(*) -->
+                <data android:scheme="yourapp" android:host="open" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+
+            <!-- Branch App Links - Live App -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- TODO add your Branch link domains instead of the placeholder values: https://help.branch.io/developers-hub/docs/android-basic-integration#configure-app -->
+                <data android:scheme="https" android:host="example.app.link" />
+                <!-- example-alternate domain is required for App Links when the Journeys/Web SDK and Deepviews are used inside your website.  -->
+                <data android:scheme="https" android:host="example-alternate.app.link" />
+            </intent-filter>
+            <!-- Branch App Links - Test App -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- TODO add your test Branch link domains instead of the placeholder values: https://help.branch.io/developers-hub/docs/android-basic-integration#configure-app -->
+                <data android:scheme="https" android:host="example.test-app.link" />
+                <!-- example-alternate domain is required for App Links when the Journeys/Web SDK and Deepviews are used inside your website.  -->
+                <data android:scheme="https" android:host="example-alternate.test-app.link" />
+            </intent-filter>
         </activity>
+        <!-- TODO add your Branch live and test key instead of the placeholder values: https://help.branch.io/developers-hub/docs/android-basic-integration#configure-app-->
+        <meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_xx" />
+        <meta-data android:name="io.branch.sdk.BranchKey.test" android:value="key_test_xx" />
+        <meta-data android:name="io.branch.sdk.TestMode" android:value="false" />     <!-- Set to true to use Branch_Test_Key (useful when simulating installs and/or switching between debug and production flavors) -->
+
     </application>
 
 </manifest>
