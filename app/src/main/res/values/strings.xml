@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Sample App</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="purchase">Purchase</string>
+    <string name="custom_event">Custom Event</string>
+</resources>
